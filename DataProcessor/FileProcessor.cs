@@ -1,5 +1,7 @@
 ﻿using static System.Console;
 using System.IO;
+using System;
+
 namespace DataProcessor
 {
     internal class FileProcessor
@@ -47,6 +49,49 @@ namespace DataProcessor
             string backupFilePath = Path.Combine(backupDirectoryPath, inputFileName);
             WriteLine($"Copying {InputFilePath} to {backupFilePath}");
             File.Copy(InputFilePath, backupFilePath, true);
+
+            //move to in progress dir
+            Directory.CreateDirectory(Path.Combine(rootDirectoryPath, InProgressDirectoryName));
+            string inProgressFilePath =
+                Path.Combine(rootDirectoryPath, InProgressDirectoryName, inputFileName);
+
+            if (File.Exists(inProgressFilePath))
+            {
+                WriteLine($"ERROR: a file with the name {inProgressFilePath} is already being processed.");
+                return;
+            }
+
+            WriteLine($"Moving {InputFilePath} to {inProgressFilePath}");
+            File.Move(InputFilePath, inProgressFilePath);
+
+            //determine type of file
+
+            string extension = Path.GetExtension(InputFilePath);
+            switch (extension)
+            {
+                case ".txt":
+                    ProcessTextFile(inProgressFilePath);
+                    break;
+                default:
+                    WriteLine($"{extension} is an unsupported file type");
+                    break;
+            }
+            string completedDirectoryPath = Path.Combine(rootDirectoryPath, CompletedDirectoryName);
+            Directory.CreateDirectory(completedDirectoryPath);
+
+            WriteLine($"Moving {InputFilePath} to {inProgressFilePath}");
+            //File.Move(inProgressFilePath, Path.Combine(completedDirectoryPath, inputFileName));
+            var completedFileName = 
+                $"{Path.GetFileNameWithoutExtension(InputFilePath)} - {Guid.NewGuid()}{extension}";
+           // completedFileName = Path.ChangeExtension(completedFileName, ".complete");
+            var completedFilePath = Path.Combine(completedDirectoryPath, completedFileName);
+            File.Move(inProgressFilePath, completedFilePath);
+        }
+
+        private void ProcessTextFile(string inProgressFilePath)
+        {
+            WriteLine($"Processing text file {inProgressFilePath}");
+            //read in and process
         }
     }
 }
