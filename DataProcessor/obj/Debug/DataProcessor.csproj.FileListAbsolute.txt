@@ -5,3 +5,10 @@ C:\Users\user\source\repos\DataProcessor\DataProcessor\obj\Debug\DataProcessor.c
 C:\Users\user\source\repos\DataProcessor\DataProcessor\obj\Debug\DataProcessor.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\DataProcessor\DataProcessor\obj\Debug\DataProcessor.exe
 C:\Users\user\source\repos\DataProcessor\DataProcessor\obj\Debug\DataProcessor.pdb
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\bin\Debug\DataProcessor.exe.config
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\bin\Debug\DataProcessor.exe
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\bin\Debug\DataProcessor.pdb
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.csprojAssemblyReference.cache
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.exe
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.pdb

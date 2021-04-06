@@ -14,6 +14,13 @@ namespace DataProcessor
         public void Process()
         {
             WriteLine($"begin process of {InputFilePath}");
+
+            // check if exist
+            if (!File.Exists(InputFilePath))
+            {
+                WriteLine($"ERROR : file {InputFilePath} does not exist.");
+                return;
+            }
         }
     }
 }
