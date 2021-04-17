@@ -11,3 +11,4 @@ C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\bin\Debug\
 C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.exe
 C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.pdb
+C:\Users\user\Documents\repos\WorkingwithFileandStreams\DataProcessor\obj\Debug\DataProcessor.csprojAssemblyReference.cache

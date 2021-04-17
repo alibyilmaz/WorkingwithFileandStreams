@@ -5,11 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Concurrent;
 
 namespace DataProcessor
 {
     class Program
     {
+        private static ConcurrentDictionary<string, string> FileToProcess =
+            new ConcurrentDictionary<string, string>();
+
         static void Main(string[] args)
         {
             WriteLine("Parsing command line options");
@@ -28,7 +32,8 @@ namespace DataProcessor
                     inputFileWatcher.IncludeSubdirectories = false;
                     inputFileWatcher.InternalBufferSize = 32768; // 32 kb
                     inputFileWatcher.Filter = "*.*";
-                    inputFileWatcher.NotifyFilter = NotifyFilters.LastWrite;
+                    inputFileWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite;
+
 
                     inputFileWatcher.Created += FileCreated;
                     inputFileWatcher.Changed += FileChanged;
@@ -46,10 +51,15 @@ namespace DataProcessor
         private static void FileCreated(object sender, FileSystemEventArgs e)
         {
             WriteLine($"* File created: {e.Name} - type: {e.ChangeType}");
+
+            var fileProcessor = new FileProcessor(e.FullPath);
+            fileProcessor.Process();
         }
         private static void FileChanged(object sender, FileSystemEventArgs e)
         {
             WriteLine($"* File changed: {e.Name} - type: {e.ChangeType}");
+            var fileProcessor = new FileProcessor(e.FullPath);
+            fileProcessor.Process();
         }
         private static void FileDeleted(object sender, FileSystemEventArgs e)
         {
